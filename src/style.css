@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --base-color: #111111;
+    --text-color: #ffffff;
+
+    --main-font: 'Rubik', sans-serif;
+}
+
+.lightmode {
+    --base-color: #ffffff;
+    --text-color: #111111;
+}
+
+body {
+    margin: 0;
+    background-color: var(--base-color);
+    color: var(--text-color);
+
+    font-family: var(--main-font);
+}

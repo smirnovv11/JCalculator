@@ -1,0 +1,30 @@
+{
+    "name": "jcalculator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "npx webpack --mode production",
+        "start": "npx webpack-dev-server --mode development",
+        "lint": "npx eslint ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@eslint/js": "^9.10.0",
+        "css-loader": "^7.1.2",
+        "eslint": "^9.10.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "globals": "^15.9.0",
+        "html-webpack-plugin": "^5.6.0",
+        "style-loader": "^4.0.0",
+        "webpack": "^5.94.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.1.0"
+    },
+    "overrides": {
+        "eslint": "^9.10.0"
+    }
+}
