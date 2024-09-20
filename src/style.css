@@ -1,18 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 :root {
     --base-color: #111111;
-    --base-alt-color: #2a2a2a;
+    --base-alt-color: #373737;
     --text-color: #ffffff;
     --border-color: #646464;
-    --border-alt-color: #a8a8a8;
+    --border-alt-color: #878787;
+
+    --operation-primary-color: rgb(250, 154, 0);
+    --operation-primary-alt-color: rgba(250, 154, 0, 0.85);
+
+    --operation-control-color: rgba(34, 34, 34, 1);
+    --operation-control-alt-color: rgba(65, 65, 65, 0.85);
+
     --main-font: 'Manrope', sans-serif;
+    --alt-font: 'Roboto Slab', serif;
+
     --radius: 12px;
+    --opacity: 0.7;
 }
 
 .lightmode {
-    --base-color: #ffffff;
+    --base-color: #e3e3e3;
+    --base-alt-color: #c1c1c1;
     --text-color: #111111;
+    --border-alt-color: #888888;
+
+    --operation-control-color: rgb(194, 194, 194);
+    --operation-control-alt-color: rgb(168, 168, 168);
+    --operation-primary-alt-color: rgb(255, 175, 47);
+
+    --opacity: 1;
 }
 
 body {
@@ -35,10 +54,20 @@ header {
     padding-top: 0.5rem;
 }
 .title {
+    text-align: center;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.75rem;
     user-select: none;
+    width: 110px;
+    cursor: pointer;
+    color: var(--text-color);
+    text-decoration: none;
+}
+.subtitle {
+    font-size: 1.25rem;
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 button {
@@ -48,23 +77,39 @@ button {
     font-family: var(--main-font);
     border: solid var(--border-color) 1px;
     color: var(--text-color);
+    position: relative;
+    display: block;
 }
-
 .theme-btn {
     border-radius: 12px;
     font-size: 16px;
-    padding: 4px var(--radius);
+    padding: 4px calc(var(--radius) - 1px);
+    width: 110px;
+    position: relative;
 }
 .theme-btn:hover {
     border-color: var(--border-alt-color);
 }
+.theme-btn:active {
+    background-color: var(--base-alt-color);
+}
+
+.theme-btn span:last-child {
+    display: none;
+}
+.lightmode .theme-btn span:last-child {
+    display: block;
+}
+.lightmode .theme-btn span:first-child {
+    display: none;
+}
 
 main {
-    vertical-align: middle;
     display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
 }
 .calculator {
     display: grid;
@@ -72,15 +117,17 @@ main {
     border: solid var(--border-color) 1px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .display {
     grid-column: span 4;
     padding: 16px;
     font-size: 30px;
     text-align: right;
-    border: none;
+    border: solid var(--border-color) 1px;
+    border-top-left-radius: calc(var(--radius) - 1px);
+    border-top-right-radius: calc(var(--radius) - 1px);
     outline: none;
+    overflow: hidden;
     color: var(--text-color);
     font-family: var(--main-font);
     font-weight: 700;
@@ -92,14 +139,44 @@ main {
     overflow: hidden;
     user-select: none;
 }
-
-.calculator-btn:nth-last-child(3) {
-    border-bottom-left-radius: var(--radius);
-}
-.calculator-btn:last-child {
-    border-bottom-right-radius: var(--radius);
-}
-
 .calculator-btn:hover {
     background-color: var(--base-alt-color);
+}
+.calculator-btn:active {
+    background-color: var(--base-color);
+}
+
+.calculator-btn.operation {
+    background-color: var(--operation-control-color);
+}
+.calculator-btn.operation:hover {
+    background-color: var(--operation-control-alt-color);
+}
+.calculator-btn.operation:active {
+    background-color: var(--operation-control-color);
+}
+.calculator-btn.operation.primary {
+    background-color: var(--operation-primary-color);
+}
+.calculator-btn.operation.primary:hover {
+    background-color: var(--operation-primary-alt-color);
+}
+.calculator-btn.operation.primary:active {
+    background-color: var(--operation-primary-color);
+}
+
+.calculator-btn:nth-last-child(3) {
+    border-bottom-left-radius: calc(var(--radius) - 1px);
+}
+.calculator-btn:last-child {
+    border-bottom-right-radius: calc(var(--radius) - 1px);
+}
+
+.jfact {
+    font-family: var(--alt-font);
+    font-weight: 300;
+    font-size: small;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    opacity: var(--opacity);
 }
