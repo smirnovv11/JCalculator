@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 :root {
     --base-color: #111111;
+    --base-alt-color: #2a2a2a;
     --text-color: #ffffff;
-
-    --main-font: 'Rubik', sans-serif;
+    --border-color: #646464;
+    --border-alt-color: #a8a8a8;
+    --main-font: 'Manrope', sans-serif;
+    --radius: 12px;
 }
 
 .lightmode {
@@ -17,5 +20,86 @@ body {
     background-color: var(--base-color);
     color: var(--text-color);
 
+    display: flex;
+    flex-direction: column;
+
     font-family: var(--main-font);
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 4rem;
+    padding-top: 0.5rem;
+}
+.title {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    user-select: none;
+}
+
+button {
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+    background-color: var(--base-color);
+    font-family: var(--main-font);
+    border: solid var(--border-color) 1px;
+    color: var(--text-color);
+}
+
+.theme-btn {
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 4px var(--radius);
+}
+.theme-btn:hover {
+    border-color: var(--border-alt-color);
+}
+
+main {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    border: solid var(--border-color) 1px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.display {
+    grid-column: span 4;
+    padding: 16px;
+    font-size: 30px;
+    text-align: right;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-family: var(--main-font);
+    font-weight: 700;
+    background-color: transparent;
+}
+.calculator-btn {
+    padding: 12px 0px;
+    font-size: 24px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.calculator-btn:nth-last-child(3) {
+    border-bottom-left-radius: var(--radius);
+}
+.calculator-btn:last-child {
+    border-bottom-right-radius: var(--radius);
+}
+
+.calculator-btn:hover {
+    background-color: var(--base-alt-color);
 }
