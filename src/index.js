@@ -12,5 +12,9 @@ onLoadTheme()
 
 themeButton.addEventListener('click', event => onSwitchTheme(event))
 calcButtons.forEach(el => el.addEventListener('click', event => onCalcButtonClick(event)))
-body.addEventListener('keyup', event => onKeyUp(event))
+body.addEventListener('keydown', event => onKeyUp(event))
 jfact.innerHTML = 'JFact: ' + randomFact()
+
+window.onload = () => {
+    document.querySelector('.loading-screen').remove()
+}

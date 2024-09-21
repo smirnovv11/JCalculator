@@ -19,10 +19,11 @@
 
     --radius: 12px;
     --opacity: 0.7;
+    --margin: 16px;
 }
 
 .lightmode {
-    --base-color: #e3e3e3;
+    --base-color: #dedede;
     --base-alt-color: #c1c1c1;
     --text-color: #111111;
     --border-alt-color: #888888;
@@ -33,7 +34,6 @@
 
     --opacity: 1;
 }
-
 body {
     margin: 0;
     background-color: var(--base-color);
@@ -44,6 +44,50 @@ body {
 
     font-family: var(--main-font);
     min-height: 100vh;
+}
+
+.loading-screen {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--base-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loader {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    box-shadow:
+        20px 0 var(--text-color),
+        -20px 0 var(--text-color);
+    position: relative;
+    animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        background-color: var(--border-color);
+        box-shadow:
+            20px 0 var(--border-color),
+            -20px 0 var(--text-color);
+    }
+    50% {
+        background-color: var(--text-color);
+        box-shadow:
+            20px 0 var(--border-color),
+            -20px 0 var(--border-color);
+    }
+    100% {
+        background-color: var(--border-color);
+        box-shadow:
+            20px 0 var(--text-color),
+            -20px 0 var(--border-color);
+    }
 }
 
 header {
@@ -119,6 +163,7 @@ main {
     border: solid var(--border-color) 1px;
     border-radius: 12px;
     overflow: hidden;
+    margin-inline: var(--margin);
 }
 .display {
     grid-column: span 4;
@@ -180,12 +225,14 @@ main {
 }
 
 .jfact {
+    margin-inline: var(--margin);
     font-family: var(--alt-font);
     font-weight: 300;
     font-size: small;
     margin-top: 6rem;
     margin-bottom: 2rem;
     opacity: var(--opacity);
+    text-align: center;
 }
 
 footer {
@@ -193,4 +240,49 @@ footer {
     opacity: 0.5;
     font-size: 14px;
     margin: 12px 24px;
+}
+
+@media (width < 600px) {
+    footer {
+        align-self: center;
+        font-size: 12px;
+    }
+    header {
+        width: 50%;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto);
+        align-self: center;
+        margin-inline: var(--margin);
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .title {
+        grid-column: span 2;
+        width: auto;
+    }
+    .subtitle {
+        grid-column: 1;
+    }
+}
+
+@media (width < 450px) {
+    header {
+        width: 70%;
+    }
+    main {
+        width: 85%;
+        justify-content: flex-start;
+        align-self: center;
+        height: auto;
+    }
+    .jfact {
+        margin-top: 3rem;
+        margin-bottom: 0;
+    }
+}
+@media (width < 380px) {
+    .calculator {
+        transform: scale(0.9);
+    }
 }
