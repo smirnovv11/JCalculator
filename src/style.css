@@ -53,6 +53,9 @@ header {
     padding-inline: 4rem;
     padding-top: 0.5rem;
 }
+a {
+    color: var(--text-color);
+}
 .title {
     text-align: center;
     font-weight: 700;
@@ -61,7 +64,6 @@ header {
     user-select: none;
     width: 110px;
     cursor: pointer;
-    color: var(--text-color);
     text-decoration: none;
 }
 .subtitle {
@@ -184,4 +186,11 @@ main {
     margin-top: 6rem;
     margin-bottom: 2rem;
     opacity: var(--opacity);
+}
+
+footer {
+    align-self: flex-end;
+    opacity: 0.5;
+    font-size: 14px;
+    margin: 12px 24px;
 }
