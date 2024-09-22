@@ -2,6 +2,7 @@ const display = document.querySelector('.display')
 
 let activeOperation = null
 let isWaitingForSecondOperand = false
+let isNewCalculation = false
 let currentOperands = {}
 
 const removeActiveOperator = () => {
@@ -15,6 +16,7 @@ const resetCalculator = () => {
     display.value = '0'
     activeOperation = null
     isWaitingForSecondOperand = false
+    isNewCalculation = false
     currentOperands = {
         first: {
             value: '0',
@@ -31,6 +33,11 @@ const resetCalculator = () => {
 resetCalculator()
 
 const handleInput = inputValue => {
+    if (isNewCalculation && isNumeric(inputValue)) {
+        resetCalculator()
+        isNewCalculation = false
+    }
+
     if (isNumeric(inputValue)) {
         updateDisplay(inputValue)
         storeOperand(inputValue)
@@ -106,6 +113,12 @@ const toggleSign = () => {
 }
 
 const handleOperator = operator => {
+    if (isNewCalculation) {
+        isNewCalculation = false
+        lastOperator = null
+        lastOperand = null
+    }
+
     if (activeOperation && !isWaitingForSecondOperand) {
         const result = performCalculation(
             parseFloat(currentOperands.first.value),
@@ -151,6 +164,8 @@ const handleEqual = () => {
         updateDisplay(result, false)
         currentOperands.first.value = result.toString()
     }
+
+    isNewCalculation = true
 }
 
 const performCalculation = (a, b, operator) => {
