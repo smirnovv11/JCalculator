@@ -140,13 +140,16 @@ button {
     background-color: var(--base-alt-color);
 }
 
-.theme-btn span:last-child {
+.theme-btn #dark {
     display: none;
 }
-.lightmode .theme-btn span:last-child {
+.theme-btn #light {
     display: block;
 }
-.lightmode .theme-btn span:first-child {
+.lightmode .theme-btn #dark {
+    display: block;
+}
+.lightmode .theme-btn #light {
     display: none;
 }
 

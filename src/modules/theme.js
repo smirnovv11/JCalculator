@@ -10,11 +10,10 @@ const onLoadTheme = () => {
     }
 }
 
-const onSwitchTheme = event => {
+const onSwitchTheme = () => {
     const isLightMode = body.classList.toggle('lightmode')
 
     localStorage.setItem('isLightMode', isLightMode)
-    event.target.innerHTML = isLightMode ? 'Dark' : 'Light'
 }
 
 module.exports = {
