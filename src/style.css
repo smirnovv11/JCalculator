@@ -34,6 +34,9 @@
 
     --opacity: 1;
 }
+html {
+    background-color: var(--base-color);
+}
 body {
     margin: 0;
     background-color: var(--base-color);

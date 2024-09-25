@@ -101,8 +101,15 @@ const handleComma = () => {
 }
 
 const handlePercentage = () => {
-    const current = activeOperation ? currentOperands.second : currentOperands.first
-    current.value = (parseFloat(current.value) / 100).toString()
+    let current = activeOperation ? currentOperands.second : currentOperands.first
+
+    if (activeOperation && currentOperands.first.value !== '0') {
+        const baseValue = parseFloat(currentOperands.first.value)
+        current.value = ((parseFloat(current.value) / 100) * baseValue).toString()
+    } else {
+        current.value = (parseFloat(current.value) / 100).toString()
+    }
+
     updateDisplay(current.value, false)
 }
 
